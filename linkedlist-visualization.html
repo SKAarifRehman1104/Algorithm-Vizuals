@@ -1,0 +1,84 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Linked List Visualization</title>
+  <link rel="stylesheet" href="visualizer-styles.css">
+</head>
+<body>
+  <div class="container animate-fade-in">
+    <div class="header">
+      <h1 class="text-gradient">Linked List Visualization</h1>
+      <p>Visualize linked list operations like insertion and deletion at different positions.</p>
+    </div>
+
+    <div class="glass-card p-6 rounded-lg">
+      <div class="flex-col space-y-8">
+        <!-- Input Controls -->
+        <div class="flex flex-wrap gap-4 justify-center">
+          <div class="flex flex-col space-y-2">
+            <label class="label">Value</label>
+            <input type="number" id="valueInput" class="input w-36" placeholder="Enter a number">
+          </div>
+          
+          <div class="flex flex-col space-y-2">
+            <label class="label">Index</label>
+            <input type="number" id="indexInput" class="input w-36" placeholder="Enter index">
+          </div>
+        </div>
+        
+        <!-- Operation Buttons -->
+        <div class="flex flex-wrap gap-2 justify-center">
+          <button id="addFrontBtn" class="button button-outline">Add to Front</button>
+          <button id="addEndBtn" class="button button-outline">Add to End</button>
+          <button id="addIndexBtn" class="button button-outline">Add at Index</button>
+          <button id="delFrontBtn" class="button button-outline">Delete from Front</button>
+          <button id="delEndBtn" class="button button-outline">Delete from End</button>
+          <button id="delIndexBtn" class="button button-outline">Delete at Index</button>
+          <button id="searchBtn" class="button button-outline">Search</button>
+        </div>
+        
+        <!-- Linked List Display -->
+        <div class="py-10 px-4">
+          <div class="text-sm text-muted mb-4 text-center">
+            Linked List Visualization
+          </div>
+          
+          <div id="linkedListContainer" class="flex flex-wrap justify-center items-center" >
+            <!-- Nodes will be displayed here -->
+          </div>
+        </div>
+        
+        <!-- About Section -->
+        <div class="glass-card p-4 rounded-lg mt-8">
+          <h3 class="text-lg font-medium mb-2">About Linked Lists</h3>
+          <p class="text-sm text-muted">
+            Linked lists consist of nodes where each node contains a data field and a reference to the next node. Unlike arrays, linked lists allow efficient insertions and deletions but have O(n) access time.
+          </p>
+          <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 mt-4">
+            <div class="glass-card p-4 rounded-lg">
+              <div class="text-sm font-medium mb-1">Access</div>
+              <div class="text-xs text-muted">O(n)</div>
+            </div>
+            <div class="glass-card p-4 rounded-lg">
+              <div class="text-sm font-medium mb-1">Insertion</div>
+              <div class="text-xs text-muted">O(1) at known position</div>
+            </div>
+            <div class="glass-card p-4 rounded-lg">
+              <div class="text-sm font-medium mb-1">Deletion</div>
+              <div class="text-xs text-muted">O(1) at known position</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Toast container for notifications -->
+  <div id="toastContainer" class="toast-container"></div>
+
+  <script src="linkedlist-visualization.js"></script>
+</body>
+</html>

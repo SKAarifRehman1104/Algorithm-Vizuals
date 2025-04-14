@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>N-Queen Problem Visualization</title>
+    <link rel="stylesheet" href="visualizer-styles.css">
+    <style>
+        /* Button height fixes */
+        .input, .button {
+            height: 38px;
+            box-sizing: border-box;
+        }
+
+        /* Chess board styles */
+        #chessBoard {
+            display: grid;
+            grid-template-columns: repeat(var(--board-size), 50px);
+            grid-template-rows: repeat(var(--board-size), 50px);
+            gap: 0;
+            border: 2px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .chess-cell {
+            width: 50px;
+            height: 50px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 1.4rem;
+            font-weight: bold;
+        }
+
+        .chess-cell.white {
+            background-color: rgba(240, 217, 181, 0.8);
+            /* Light tile */
+        }
+
+        .chess-cell.black {
+            background-color: rgba(181, 136, 99, 0.8);
+            /* Dark tile */
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container animate-fade-in">
+        <div class="header">
+            <h1 class="text-gradient">N-Queen Problem Visualization</h1>
+            <p>Visualize the classic N-Queen problem using backtracking algorithm.</p>
+        </div>
+
+        <div class="glass-card p-6 rounded-lg">
+            <div class="flex-col space-y-8">
+                <!-- Controls Panel -->
+                <div class="flex flex-wrap gap-4 justify-center">
+                    <div class="flex flex-col space-y-2">
+                        <label class="label">Board Size (N)</label>
+                        <div class="flex gap-2">
+                            <input type="number" id="boardSizeInput" class="input" min="1" max="12" value="4"
+                                placeholder="Enter board size">
+                            <button id="setSizeBtn" class="button button-outline">Set Size</button>
+                        </div>
+                    </div>
+
+                    <div class="flex items-end">
+                        <button id="startVisualizationBtn" class="button button-default">Start Visualization</button>
+                    </div>
+                </div>
+
+                <!-- Solution Navigator (Initially Hidden) -->
+                <div id="solutionNavigator" class="flex justify-center gap-4 items-center" style="display: none;">
+                    <button id="prevSolutionBtn" class="button button-outline">Previous</button>
+                    <span id="solutionCounterText" class="text-sm text-muted">
+                        Solution 1 of 1
+                    </span>
+                    <button id="nextSolutionBtn" class="button button-outline">Next</button>
+                </div>
+
+                <!-- Chess Board -->
+                <div class="flex justify-center py-8">
+                    <div id="chessBoard" class="glass-card rounded-lg overflow-hidden grid">
+                        <!-- Chess cells will be generated here -->
+                    </div>
+                </div>
+
+                <!-- About Section -->
+                <div class="glass-card p-4 rounded-lg">
+                    <h3 class="text-lg font-medium mb-2">About N-Queen Problem</h3>
+                    <p class="text-sm text-muted">
+                        The N-Queen problem is a classic chess puzzle where you need to place N queens on an N×N
+                        chessboard so that no two queens attack each other. A queen can attack any piece in the same
+                        row, column, or diagonal.
+                    </p>
+                    <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 mt-4">
+                        <div class="glass-card p-4 rounded-lg">
+                            <div class="text-sm font-medium mb-1">Algorithm</div>
+                            <div class="text-xs text-muted">Backtracking</div>
+                        </div>
+                        <div class="glass-card p-4 rounded-lg">
+                            <div class="text-sm font-medium mb-1">Time Complexity</div>
+                            <div class="text-xs text-muted">O(N!)</div>
+                        </div>
+                        <div class="glass-card p-4 rounded-lg">
+                            <div class="text-sm font-medium mb-1">Space Complexity</div>
+                            <div class="text-xs text-muted">O(N²)</div>
+                        </div>
+                    </div>
+
+                    <div class="text-sm text-muted mt-4">
+                        <div class="font-medium mb-1">Solutions Count for Common Board Sizes:</div>
+                        <div class="flex flex-wrap gap-2 text-xs">
+                            <span class="glass-card px-2 py-1 rounded">1×1: 1 solution</span>
+                            <span class="glass-card px-2 py-1 rounded">4×4: 2 solutions</span>
+                            <span class="glass-card px-2 py-1 rounded">5×5: 10 solutions</span>
+                            <span class="glass-card px-2 py-1 rounded">6×6: 4 solutions</span>
+                            <span class="glass-card px-2 py-1 rounded">7×7: 40 solutions</span>
+                            <span class="glass-card px-2 py-1 rounded">8×8: 92 solutions</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Toast container for notifications -->
+    <div id="toastContainer" class="toast-container"></div>
+
+    <script src="nqueen-visualization.js"></script>
+</body>
+
+</html>

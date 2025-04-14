@@ -1,0 +1,81 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sorting Algorithm Visualization</title>
+  <link rel="stylesheet" href="visualizer-styles.css">
+</head>
+<body>
+  <div class="container animate-fade-in">
+    <div class="header">
+      <h1 class="text-gradient">Sorting Algorithms Visualization</h1>
+      <p>Visualize different sorting techniques with step-by-step animation.</p>
+    </div>
+
+    <div class="glass-card p-6 rounded-lg">
+      <div class="flex-col space-y-8">
+        <div class="grid grid-cols-2">
+          <!-- Controls Panel -->
+          <div class="flex-col space-y-4">
+            <!-- Array Size Input -->
+            <div class="glass-card p-4 rounded-lg">
+              <label class="label">Set array size:</label>
+              <div class="flex gap-2">
+                <input type="number" id="arraySizeInput" class="input" min="2" max="15" value="5" placeholder="Enter array size (2-15)">
+                <button id="generateBtn" class="button button-outline">Generate</button>
+              </div>
+            </div>
+            
+            <!-- Custom Array Input -->
+            <div class="glass-card p-4 rounded-lg">
+              <label class="label">Enter array elements (comma separated):</label>
+              <div class="flex gap-2">
+                <input type="text" id="arrayElementsInput" class="input" placeholder="e.g., 64, 34, 25, 12, 22, 11, 90">
+                <button id="applyBtn" class="button button-outline">Apply</button>
+              </div>
+            </div>
+            
+            <!-- Algorithm Selection -->
+            <div class="glass-card p-4 rounded-lg">
+              <label class="label">Select sorting algorithm:</label>
+              <select id="algorithmSelect" class="select">
+                <option value="bubble">Bubble Sort</option>
+                <option value="selection">Selection Sort</option>
+                <option value="insertion">Insertion Sort</option>
+                <option value="quick">Quick Sort</option>
+                <option value="merge">Merge Sort</option>
+              </select>
+            </div>
+            
+            <!-- Start Button -->
+            <button id="startSortingBtn" class="button button-default w-full">Start Sorting</button>
+          </div>
+
+          <!-- Algorithm Details -->
+          <div id="algorithmDetails" class="glass-card p-4 rounded-lg flex-col">
+            <h3 class="text-lg font-medium mb-4">Algorithm Details</h3>
+            <div id="algorithmDescription" class="text-sm text-muted">
+              <!-- Algorithm details will be filled by JavaScript -->
+            </div>
+          </div>
+        </div>
+        
+        <!-- Array Visualization -->
+        <div class="glass-card p-6 rounded-lg">
+          <h3 class="text-lg font-medium mb-4 text-center">Visualization</h3>
+          <div id="arrayContainer" class="flex justify-center items-end h-64 gap-3">
+            <!-- Array bars will be generated here -->
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Toast container for notifications -->
+  <div id="toastContainer" class="toast-container"></div>
+
+  <script src="sorting-visualization.js"></script>
+</body>
+</html>
